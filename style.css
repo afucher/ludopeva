@@ -28,6 +28,11 @@
   --shadow-md: 0 6px 24px rgba(0,0,0,.12);
   --shadow-lg: 0 16px 48px rgba(0,0,0,.16);
 
+  --cat-ferro:  #6b7280;
+  --cat-bronze: #b45309;
+  --cat-prata:  #94a3b8;
+  --cat-ouro:   #f0a500;
+
   --transition: all .25s ease;
   --max-width: 1200px;
   --section-pad: 96px 24px;
@@ -503,10 +508,16 @@ ul  { list-style: none; }
   border-radius: var(--radius-lg);
   padding: 28px 28px 24px;
   border: 2px solid var(--cream-dk);
+  border-left-width: 6px;
   box-shadow: var(--shadow-sm);
   transition: var(--transition);
   animation: cardFadeIn .5s ease both;
 }
+
+.category-card--ferro  { border-left-color: var(--cat-ferro); }
+.category-card--bronze { border-left-color: var(--cat-bronze); }
+.category-card--prata  { border-left-color: var(--cat-prata); }
+.category-card--ouro   { border-left-color: var(--cat-ouro); }
 
 .category-card:nth-child(1) { animation-delay: .05s; }
 .category-card:nth-child(2) { animation-delay: .15s; }
@@ -519,10 +530,14 @@ ul  { list-style: none; }
 }
 
 .category-card:hover {
-  border-color: var(--orange);
   box-shadow: var(--shadow-md);
   transform: translateY(-5px);
 }
+
+.category-card--ferro:hover  { border-color: var(--cat-ferro); }
+.category-card--bronze:hover { border-color: var(--cat-bronze); }
+.category-card--prata:hover  { border-color: var(--cat-prata); }
+.category-card--ouro:hover   { border-color: var(--cat-ouro); }
 
 .category-card__header {
   display: flex;
@@ -533,27 +548,24 @@ ul  { list-style: none; }
   border-bottom: 2px dashed var(--cream-dk);
 }
 
-.category-card__icon {
-  font-size: 2.2rem;
+.category-card__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
   flex-shrink: 0;
-  line-height: 1;
 }
 
-.category-card__label {
-  display: block;
-  font-size: .68rem;
-  font-weight: 800;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--orange-dk);
-  margin-bottom: 3px;
-}
+.category-card--ferro  .category-card__dot { background: var(--cat-ferro); }
+.category-card--bronze .category-card__dot { background: var(--cat-bronze); }
+.category-card--prata  .category-card__dot { background: var(--cat-prata); }
+.category-card--ouro   .category-card__dot { background: var(--cat-ouro); }
 
 .category-card__name {
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 900;
   color: var(--purple);
   line-height: 1.2;
+  margin: 0;
 }
 
 .category-card__table {
