@@ -9,24 +9,36 @@
   <meta property="og:title" content="Ludopeva – Aluguel de Jogos de Tabuleiro" />
   <meta property="og:description"
     content="Divirta-se com jogos de tabuleiro sem precisar comprar. A primeira loja de locação de Itupeva/SP!" />
-  <!-- Meta Pixel Code -->
+  <!-- Meta Pixel Code — carrega apenas após consentimento (LGPD) -->
   <script>
-    !function (f, b, e, v, n, t, s) {
-      if (f.fbq) return; n = f.fbq = function () {
-        n.callMethod ?
-          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-      };
-      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-      n.queue = []; t = b.createElement(e); t.async = !0;
-      t.src = v; s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s)
-    }(window, document, 'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1109927218013653');
-    fbq('track', 'PageView');
+    // Stub seguro: enfileira chamadas fbq() sem erros antes do consentimento
+    window.fbq = window.fbq || function () {
+      (window.fbq.queue = window.fbq.queue || []).push(arguments);
+    };
+
+    function loadMetaPixel() {
+      if (window._fbqLoaded) return;
+      window._fbqLoaded = true;
+      !function (f, b, e, v, n, t, s) {
+        n = f.fbq = function () {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n; n.loaded = !0; n.version = '2.0';
+        n.queue = window.fbq.queue || [];
+        t = b.createElement(e); t.async = !0;
+        t.src = v; s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1109927218013653');
+      fbq('track', 'PageView');
+    }
+
+    // Visita anterior já consentiu — carrega imediatamente, sem mostrar o banner
+    if (localStorage.getItem('cookie_consent') === 'granted') {
+      loadMetaPixel();
+    }
   </script>
-  <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=1109927218013653&ev=PageView&noscript=1" /></noscript>
   <!-- End Meta Pixel Code -->
   <title>Ludopeva – Aluguel de Jogos de Tabuleiro · Itupeva/SP</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -415,6 +427,7 @@
             <li><a href="#por-que-alugar">Por Que Alugar?</a></li>
             <li><a href="#categorias">Categorias</a></li>
             <li><a href="#horarios">Horários</a></li>
+            <li><a href="politica-de-privacidade.html">Política de Privacidade</a></li>
           </ul>
         </div>
       </div>
@@ -427,6 +440,20 @@
       </div>
     </div>
   </footer>
+
+  <!-- Banner de Consentimento de Cookies (LGPD) -->
+  <div id="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+    <div class="cookie-banner__content">
+      <p class="cookie-banner__text">
+        🎲 Usamos o <strong>Meta Pixel</strong> para entender se nossos anúncios no Instagram estão chegando às pessoas certas em Itupeva.
+        <a href="politica-de-privacidade.html" class="cookie-banner__link">Saiba mais →</a>
+      </p>
+      <div class="cookie-banner__actions">
+        <button id="cookie-accept" class="btn btn--primary">Aceitar</button>
+        <button id="cookie-reject" class="btn btn--ghost-dark">Recusar</button>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

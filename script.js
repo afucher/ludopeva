@@ -82,3 +82,45 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+// ── Cookie Consent (LGPD) ────────────────────────────────────────────
+(function initCookieConsent() {
+  const banner    = document.getElementById('cookie-banner');
+  const btnAccept = document.getElementById('cookie-accept');
+  const btnReject = document.getElementById('cookie-reject');
+
+  if (!banner) return;
+
+  // Already decided on a previous visit — stay silent
+  const consent = localStorage.getItem('cookie_consent');
+  if (consent === 'granted' || consent === 'denied') return;
+
+  // Show the banner after 200px of scroll OR 4 seconds — whichever comes first
+  let shown = false;
+
+  function showBanner() {
+    if (shown) return;
+    shown = true;
+    banner.classList.add('is-visible');
+    window.removeEventListener('scroll', onScroll);
+    clearTimeout(timer);
+  }
+
+  function onScroll() {
+    if (window.scrollY >= 200) showBanner();
+  }
+
+  const timer = setTimeout(showBanner, 4000);
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  btnAccept.addEventListener('click', () => {
+    localStorage.setItem('cookie_consent', 'granted');
+    banner.classList.remove('is-visible');
+    if (typeof loadMetaPixel === 'function') loadMetaPixel();
+  });
+
+  btnReject.addEventListener('click', () => {
+    localStorage.setItem('cookie_consent', 'denied');
+    banner.classList.remove('is-visible');
+  });
+})();
