@@ -251,6 +251,105 @@
       color: rgba(255, 255, 255, .3);
       text-align: center;
     }
+
+    /* ── Banner de cookies (LGPD) ── */
+    #cookie-banner {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      background: var(--purple-dk);
+      border-top: 3px solid var(--orange);
+      box-shadow: 0 -4px 24px rgba(0, 0, 0, .35);
+      padding: 20px 24px;
+    }
+
+    #cookie-banner.is-visible {
+      display: block;
+    }
+
+    .cookie-banner__content {
+      max-width: 480px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .cookie-banner__text {
+      flex: 1;
+      min-width: 220px;
+      font-size: .88rem;
+      color: rgba(255, 255, 255, .88);
+      line-height: 1.6;
+    }
+
+    .cookie-banner__text strong {
+      color: var(--orange);
+    }
+
+    .cookie-banner__link {
+      color: var(--orange);
+      font-weight: 700;
+      text-decoration: underline;
+      white-space: nowrap;
+      margin-left: 4px;
+    }
+
+    .cookie-banner__actions {
+      display: flex;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .cb-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-family: 'Nunito', sans-serif;
+      font-size: .95rem;
+      font-weight: 800;
+      cursor: pointer;
+      border: none;
+      transition: filter .15s, opacity .15s;
+      white-space: nowrap;
+    }
+
+    .cb-btn--accept {
+      background: var(--orange);
+      color: var(--white);
+    }
+
+    .cb-btn--reject {
+      background: transparent;
+      color: rgba(255, 255, 255, .75);
+      border: 2px solid rgba(255, 255, 255, .3);
+    }
+
+    .cb-btn:hover {
+      filter: brightness(1.1);
+    }
+
+    @media (max-width: 480px) {
+      .cookie-banner__content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+
+      .cookie-banner__actions {
+        width: 100%;
+      }
+
+      .cb-btn {
+        flex: 1;
+      }
+    }
   </style>
 </head>
 
@@ -313,6 +412,62 @@
     <p class="footer">© 2026 Ludopeva — Itupeva / SP</p>
 
   </div>
+
+  <!-- Banner de Consentimento de Cookies (LGPD) -->
+  <div id="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+    <div class="cookie-banner__content">
+      <p class="cookie-banner__text">
+        🎲 Usamos o <strong>Meta Pixel</strong> para entender se nossos anúncios no Instagram estão chegando às pessoas certas em Itupeva.
+        <a href="../politica-de-privacidade.html" class="cookie-banner__link">Saiba mais →</a>
+      </p>
+      <div class="cookie-banner__actions">
+        <button id="cookie-accept" class="cb-btn cb-btn--accept">Aceitar</button>
+        <button id="cookie-reject" class="cb-btn cb-btn--reject">Recusar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function initCookieConsent() {
+      const banner    = document.getElementById('cookie-banner');
+      const btnAccept = document.getElementById('cookie-accept');
+      const btnReject = document.getElementById('cookie-reject');
+
+      if (!banner) return;
+
+      const consent = localStorage.getItem('cookie_consent');
+      if (consent === 'granted' || consent === 'denied') return;
+
+      let shown = false;
+
+      function showBanner() {
+        if (shown) return;
+        shown = true;
+        banner.classList.add('is-visible');
+        window.removeEventListener('scroll', onScroll);
+        clearTimeout(timer);
+      }
+
+      function onScroll() {
+        if (window.scrollY >= 200) showBanner();
+      }
+
+      const timer = setTimeout(showBanner, 4000);
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      btnAccept.addEventListener('click', () => {
+        localStorage.setItem('cookie_consent', 'granted');
+        banner.classList.remove('is-visible');
+        if (typeof loadMetaPixel === 'function') loadMetaPixel();
+      });
+
+      btnReject.addEventListener('click', () => {
+        localStorage.setItem('cookie_consent', 'denied');
+        banner.classList.remove('is-visible');
+      });
+    })();
+  </script>
+
 </body>
 
 </html>
