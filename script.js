@@ -85,9 +85,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // ── Cookie Consent (LGPD) ────────────────────────────────────────────
 (function initCookieConsent() {
-  const banner    = document.getElementById('cookie-banner');
-  const btnAccept = document.getElementById('cookie-accept');
-  const btnReject = document.getElementById('cookie-reject');
+  const banner           = document.getElementById('cookie-banner');
+  const modal            = document.getElementById('cookie-modal');
+  const btnAccept        = document.getElementById('cookie-accept');
+  const btnConfigure     = document.getElementById('cookie-configure');
+  const btnRejectAll     = document.getElementById('cookie-reject-all');
+  const btnSave          = document.getElementById('cookie-save');
+  const btnClose         = modal && modal.querySelector('.cookie-modal__close');
+  const backdrop         = modal && modal.querySelector('.cookie-modal__backdrop');
+  const toggleMarketing  = document.getElementById('cookie-toggle-marketing');
 
   if (!banner) return;
 
@@ -95,7 +101,47 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   const consent = localStorage.getItem('cookie_consent');
   if (consent === 'granted' || consent === 'denied') return;
 
-  // Show the banner after 200px of scroll OR 4 seconds — whichever comes first
+  // ── Show / hide helpers ─────────────────────────────────────────────
+  function hideBanner() {
+    banner.classList.remove('is-visible');
+  }
+
+  function openModal() {
+    modal.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.setAttribute('hidden', '');
+    document.body.style.overflow = '';
+  }
+
+  // ── Accept: grant consent, load pixel, close everything ────────────
+  function acceptAll() {
+    localStorage.setItem('cookie_consent', 'granted');
+    hideBanner();
+    closeModal();
+    if (typeof loadMetaPixel === 'function') loadMetaPixel();
+  }
+
+  // ── Deny: record denial and close everything ────────────────────────
+  function denyAll() {
+    localStorage.setItem('cookie_consent', 'denied');
+    hideBanner();
+    closeModal();
+  }
+
+  // ── Save: respect the toggle state ─────────────────────────────────
+  function savePreferences() {
+    const marketingAllowed = toggleMarketing && toggleMarketing.checked;
+    if (marketingAllowed) {
+      acceptAll();
+    } else {
+      denyAll();
+    }
+  }
+
+  // ── Show the banner after 200px scroll OR 4 s ──────────────────────
   let shown = false;
 
   function showBanner() {
@@ -113,14 +159,24 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   const timer = setTimeout(showBanner, 4000);
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  btnAccept.addEventListener('click', () => {
-    localStorage.setItem('cookie_consent', 'granted');
-    banner.classList.remove('is-visible');
-    if (typeof loadMetaPixel === 'function') loadMetaPixel();
-  });
+  // ── Event listeners ────────────────────────────────────────────────
+  btnAccept.addEventListener('click', acceptAll);
+  btnConfigure.addEventListener('click', openModal);
+  btnRejectAll.addEventListener('click', denyAll);
+  btnSave.addEventListener('click', savePreferences);
+  btnClose.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', closeModal);
 
-  btnReject.addEventListener('click', () => {
-    localStorage.setItem('cookie_consent', 'denied');
-    banner.classList.remove('is-visible');
+  // Sync aria-checked on the slider when toggle changes
+  if (toggleMarketing) {
+    toggleMarketing.addEventListener('change', () => {
+      const slider = toggleMarketing.nextElementSibling;
+      if (slider) slider.setAttribute('aria-checked', String(toggleMarketing.checked));
+    });
+  }
+
+  // Close modal on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && !modal.hasAttribute('hidden')) closeModal();
   });
 })();

@@ -456,7 +456,44 @@
       </p>
       <div class="cookie-banner__actions">
         <button id="cookie-accept" class="btn btn--primary">Aceitar</button>
-        <button id="cookie-reject" class="btn btn--ghost-dark">Recusar</button>
+        <button id="cookie-configure" class="btn btn--ghost-dark">Configurar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Configurações de Cookies (LGPD) -->
+  <div id="cookie-modal" role="dialog" aria-modal="true" aria-label="Configurações de cookies" hidden>
+    <div class="cookie-modal__backdrop"></div>
+    <div class="cookie-modal__card">
+      <button class="cookie-modal__close" aria-label="Fechar configurações">✕</button>
+      <h2 class="cookie-modal__title">🎲 Configurações de Cookies</h2>
+      <p class="cookie-modal__description">
+        Escolha quais cookies você aceita. Cookies essenciais não podem ser desativados pois são necessários para o funcionamento básico do site.
+      </p>
+
+      <ul class="cookie-modal__list">
+        <li class="cookie-modal__item">
+          <div class="cookie-modal__item-info">
+            <strong>Cookies Essenciais</strong>
+            <span>Necessários para o funcionamento do site. Não coletam dados pessoais.</span>
+          </div>
+          <span class="cookie-modal__toggle cookie-modal__toggle--locked" aria-label="Sempre ativo">Sempre ativo</span>
+        </li>
+        <li class="cookie-modal__item">
+          <div class="cookie-modal__item-info">
+            <strong>Meta Pixel (Marketing)</strong>
+            <span>Usado para medir se nossos anúncios no Instagram chegam às pessoas certas em Itupeva. <a href="politica-de-privacidade.html" class="cookie-modal__link">Saiba mais →</a></span>
+          </div>
+          <label class="cookie-modal__toggle-wrap">
+            <input type="checkbox" id="cookie-toggle-marketing" checked>
+            <span class="cookie-modal__slider" role="switch" aria-checked="true"></span>
+          </label>
+        </li>
+      </ul>
+
+      <div class="cookie-modal__actions">
+        <button id="cookie-reject-all" class="btn btn--ghost-dark">Recusar todos</button>
+        <button id="cookie-save" class="btn btn--primary">Salvar preferências</button>
       </div>
     </div>
   </div>
