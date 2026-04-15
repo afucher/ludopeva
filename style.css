@@ -159,6 +159,12 @@ ul  { list-style: none; }
   color: rgba(255,255,255,.8);
 }
 
+.section__cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}
+
 .section__tag {
   display: inline-block;
   background: var(--orange);
