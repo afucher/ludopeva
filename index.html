@@ -63,7 +63,7 @@
         <ul class="navbar__links">
           <li><a href="#como-funciona">Como Funciona</a></li>
           <li><a href="#por-que-alugar">Por Que Alugar?</a></li>
-          <li><a href="#categorias">Categorias</a></li>
+          <li><a href="#categorias">Preços</a></li>
           <li><a href="#horarios">Horários</a></li>
           <li>
             <a href="https://wa.me/5511936181891?text=Gostaria+de+mais+informações+sobre+os+jogos+para+aluguel"
@@ -162,6 +162,13 @@
           </p>
         </div>
       </div>
+
+      <div class="how-it-works-cta">
+        <a href="https://wa.me/5511936181891?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20aluguel%20de%20jogos."
+          target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg how-it-works-cta__btn">
+          Ficou com alguma dúvida? Entre em contato
+        </a>
+      </div>
     </div>
   </section>
 
@@ -254,99 +261,62 @@
   <section class="section section--light" id="categorias">
     <div class="container">
       <div class="section__header">
-        <span class="section__tag">Categorias</span>
+        <span class="section__tag">Preços</span>
         <h2 class="section__title">Quanto custa o aluguel?</h2>
-        <p class="section__subtitle">
-          Os jogos são organizados em categorias. Confira os valores por quantidade de dias.
+        <p class="section__subtitle categorias__subtitle">
+          Você pode comprar <strong>jogos de tabuleiro</strong> em sites especializados por uma média de
+          R$350,00 e <strong>esperar uma semana</strong> para receber. Já com o
+          <strong>Aluguel de Jogos</strong> você aproveita <strong>ainda hoje</strong>, pagando de
+          <strong>R$15 a R$55</strong>, pelos mesmos jogos.
         </p>
       </div>
 
-      <div class="category-grid">
+      <div class="purchase-grid" aria-label="Referência de preço para compra">
+        <img src="img/jogos_valores.png"
+          alt="Comparação de valores médios de compra de jogos de tabuleiro"
+          class="purchase-grid__image" />
+      </div>
 
-        <div class="category-card category-card--ferro">
-          <div class="category-card__header">
-            <div class="category-card__dot"></div>
-            <h3 class="category-card__name">Ferro</h3>
+      <p class="pricing-note">
+        Abaixo você pode ver como é barato alugar ou clicar no botão para <strong>ver todos os jogos</strong>
+        disponíveis para aluguel.
+      </p>
+
+      <div class="category-showcase">
+        <a class="category-showcase-card category-showcase-card--link"
+          href="https://ludopeva.lends.com.br/boardgame/war"
+          target="_blank" rel="noopener noreferrer" aria-label="Ver detalhes do jogo WAR">
+          <h3 class="category-showcase-card__title">WAR</h3>
+          <div class="category-showcase-card__box">
+            <img src="img/war.png" alt="Jogo de tabuleiro WAR" class="category-showcase-card__image" />
+            <p class="category-showcase-card__price">R$ 19,90 / 3 dias</p>
           </div>
-          <table class="category-card__table">
-            <thead>
-              <tr>
-                <th>Dias</th>
-                <th>Valor</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>5 dias</td>
-                <td>R$ 15,00</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="category-card category-card--bronze">
-          <div class="category-card__header">
-            <div class="category-card__dot"></div>
-            <h3 class="category-card__name">Bronze</h3>
+        </a>
+        <a class="category-showcase-card category-showcase-card--link"
+          href="https://ludopeva.lends.com.br/boardgame/dixit"
+          target="_blank" rel="noopener noreferrer" aria-label="Ver detalhes do jogo DIXIT">
+          <h3 class="category-showcase-card__title">DIXIT</h3>
+          <div class="category-showcase-card__box">
+            <img src="img/dixit.png" alt="Jogo de tabuleiro DIXIT" class="category-showcase-card__image" />
+            <p class="category-showcase-card__price">R$ 29,90 / 3 dias</p>
           </div>
-          <table class="category-card__table">
-            <thead>
-              <tr>
-                <th>Dias</th>
-                <th>Valor</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>5 dias</td>
-                <td>R$ 25,00</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="category-card category-card--prata">
-          <div class="category-card__header">
-            <div class="category-card__dot"></div>
-            <h3 class="category-card__name">Prata</h3>
+        </a>
+        <a class="category-showcase-card category-showcase-card--link category-showcase-card--pandemic"
+          href="https://ludopeva.lends.com.br/boardgame/pandemic"
+          target="_blank" rel="noopener noreferrer" aria-label="Ver detalhes do jogo PANDEMIC">
+          <h3 class="category-showcase-card__title">PANDEMIC</h3>
+          <div class="category-showcase-card__box">
+            <img src="img/pandemic.png" alt="Jogo de tabuleiro PANDEMIC" class="category-showcase-card__image" />
+            <p class="category-showcase-card__price">R$ 34,90 / 3 dias</p>
           </div>
-          <table class="category-card__table">
-            <thead>
-              <tr>
-                <th>Dias</th>
-                <th>Valor</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>5 dias</td>
-                <td>R$ 40,00</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        </a>
+      </div>
 
-        <div class="category-card category-card--ouro">
-          <div class="category-card__header">
-            <div class="category-card__dot"></div>
-            <h3 class="category-card__name">Ouro</h3>
-          </div>
-          <table class="category-card__table">
-            <thead>
-              <tr>
-                <th>Dias</th>
-                <th>Valor</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>5 dias</td>
-                <td>R$ 60,00</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
+      <div class="category-cta">
+        <a href="https://ludopeva.lends.com.br/"
+          target="_blank" rel="noopener noreferrer" class="btn btn--outline btn--lg">
+          Veja nossa lista de jogos
+        </a>
       </div>
 
       <div class="section__cta">
@@ -438,7 +408,7 @@
             <li><a href="#inicio">Início</a></li>
             <li><a href="#como-funciona">Como Funciona</a></li>
             <li><a href="#por-que-alugar">Por Que Alugar?</a></li>
-            <li><a href="#categorias">Categorias</a></li>
+            <li><a href="#categorias">Preços</a></li>
             <li><a href="#horarios">Horários</a></li>
             <li><a href="politica-de-privacidade.html">Política de Privacidade</a></li>
           </ul>
