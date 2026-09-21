@@ -19,9 +19,9 @@
     .filter { border:2px solid var(--purple); border-radius:999px; padding:8px 15px; background:var(--white); color:var(--purple); font:800 .9rem 'Nunito',sans-serif; cursor:pointer; transition:.2s ease; } .filter:hover,.filter[aria-pressed="true"] { border-color:var(--orange); background:var(--orange); color:var(--white); }
     .game-grid { display:flex; flex-direction:column; gap:14px; max-width:880px; margin:30px auto 0; } .game-card { display:flex; overflow:hidden; border:2px solid var(--cream-dk); border-radius:16px; background:var(--white); box-shadow:0 3px 12px rgba(50,25,70,.08); transition:border-color .2s ease,box-shadow .2s ease; } .game-card:hover { border-color:var(--orange); box-shadow:var(--shadow); }
     .game-card[hidden] { display:none; } .game-card__cover-wrap { display:grid; flex:0 0 136px; width:136px; height:136px; background:linear-gradient(145deg,var(--cream-dk),var(--cream)); place-items:center; overflow:hidden; } .game-card__cover-wrap--missing { background:linear-gradient(145deg,var(--purple),var(--purple-lt)); } .game-card__cover { width:100%; height:100%; object-fit:cover; } .game-card__cover-placeholder { display:none; font-size:3.5rem; } .game-card__cover-wrap--missing .game-card__cover-placeholder { display:block; }
-    .game-card__content { display:flex; flex:1; min-width:0; flex-direction:column; padding:16px 20px; } .game-card h2 { margin:0 0 5px; color:var(--purple); font-size:1.2rem; font-weight:900; line-height:1.2; } .game-card__content p { margin:0 0 9px; color:var(--gray-600); font-size:.92rem; line-height:1.45; } .game-card__facts { display:flex; flex-wrap:wrap; gap:5px 12px; margin:0 0 8px; padding:0; list-style:none; color:var(--orange-dk); font-size:.82rem; font-weight:900; } .game-card__facts li { white-space:nowrap; } .game-card__source { margin-top:auto; color:var(--purple); font-size:.76rem; font-weight:900; text-decoration:none; } .game-card__source:hover { color:var(--orange-dk); text-decoration:underline; }
+    .game-card__content { display:flex; flex:1; min-width:0; flex-direction:column; padding:16px 20px; } .game-card h2 { margin:0 0 5px; color:var(--purple); font-size:1.2rem; font-weight:900; line-height:1.2; } .game-card__content p { margin:0 0 9px; color:var(--gray-600); font-size:.92rem; line-height:1.45; } .game-card__facts { display:flex; flex-wrap:wrap; gap:5px 12px; margin:0; padding:0; list-style:none; color:var(--orange-dk); font-size:.82rem; font-weight:900; } .game-card__facts li { white-space:nowrap; }
     .empty { display:none; margin:36px auto 0; color:var(--gray-600); text-align:center; font-weight:700; } .empty.visible { display:block; } footer { padding:28px 24px; border-top:3px solid var(--orange); color:rgba(255,255,255,.78); background:var(--purple-dk); text-align:center; font-size:.85rem; } footer a { color:var(--orange); font-weight:800; text-decoration:none; }
-    @media (max-width:560px) { .hero { padding:38px 20px 62px; } main { padding:0 12px 42px; } .filters { padding:13px; gap:8px; } .filter { padding:6px 10px; font-size:.8rem; } .game-grid { margin-top:20px; gap:10px; } .game-card__cover-wrap { flex-basis:96px; width:96px; height:96px; } .game-card__cover-placeholder { font-size:2.6rem; } .game-card__content { padding:11px 12px; } .game-card h2 { font-size:1.02rem; } .game-card__content p { margin-bottom:7px; font-size:.8rem; line-height:1.35; } .game-card__facts { gap:3px 8px; margin-bottom:5px; font-size:.72rem; } .game-card__source { font-size:.69rem; } }
+    @media (max-width:560px) { .hero { padding:38px 20px 62px; } main { padding:0 12px 42px; } .filters { padding:13px; gap:8px; } .filter { padding:6px 10px; font-size:.8rem; } .game-grid { margin-top:20px; gap:10px; } .game-card__cover-wrap { flex-basis:96px; width:96px; height:96px; } .game-card__cover-placeholder { font-size:2.6rem; } .game-card__content { padding:11px 12px; } .game-card h2 { font-size:1.02rem; } .game-card__content p { margin-bottom:7px; font-size:.8rem; line-height:1.35; } .game-card__facts { gap:3px 8px; margin:0; font-size:.72rem; } }
   </style>
 </head>
 <body>
@@ -42,39 +42,498 @@
     </nav>
     <section class="game-grid" aria-label="Jogos disponíveis">
         <article class="game-card" data-min-players="2" data-max-players="5">
-          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/2_t.jpg" alt="Capa de Ticket to Ride" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/12159_t.jpg" alt="Capa de 5-Minute Dungeon" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
           <div class="game-card__content">
-            <h2>Ticket to Ride</h2>
-            <p>Construa rotas ferrovi&#225;rias, conecte cidades e dispute os melhores caminhos pelo mapa.</p>
+            <h2>5-Minute Dungeon</h2>
+            <p>Um jogo cooperativo de cartas em que os jogadores precisam derrotar inimigos e superar obst&#225;culos antes que o tempo acabe.</p>
             <ul class="game-card__facts" aria-label="Informações do jogo">
               <li><span aria-hidden="true">👥</span> 2 a 5 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 5 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="6">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/63936_t.jpg" alt="Capa de Abstratus Pop " loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Abstratus Pop </h2>
+            <p>Um jogo de dedu&#231;&#227;o e associa&#231;&#227;o de ideias em que os jogadores tentam descobrir palavras ou conceitos a partir de pistas.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 a 6 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 30 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="4">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/14981_t.jpg" alt="Capa de Azul" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Azul</h2>
+            <p>Um jogo de coloca&#231;&#227;o de pe&#231;as em que os jogadores criam padr&#245;es com azulejos coloridos, buscando marcar pontos ao completar linhas e conjuntos.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 a 4 jogadores</li>
               <li><span aria-hidden="true">⏱</span> 45 min</li>
             </ul>
-            <a class="game-card__source" href="https://ludopedia.com.br/jogo/ticket-to-ride" target="_blank" rel="noopener noreferrer">Fonte: Ludopedia <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="3" data-max-players="8">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/23136_t.jpg" alt="Capa de Backstabbers" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Backstabbers</h2>
+            <p>Um Battle Royale de cartas em que os jogadores usam habilidades, eliminam advers&#225;rios e acumulam moedas para se tornar o grande soberano. citeturn0search0</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 3 a 8 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 45 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="1" data-max-players="4">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/15400_t.jpg" alt="Capa de Bandido" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Bandido</h2>
+            <p>Um jogo cooperativo de cartas em que os jogadores tentam impedir que um bandido escape da pris&#227;o, fechando todos os t&#250;neis de fuga.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 1 a 4 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 15 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="4">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/1342_t.jpg" alt="Capa de Bloqueio (Quoridor)" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Bloqueio (Quoridor)</h2>
+            <p>Um jogo abstrato de estrat&#233;gia em que os jogadores movimentam seus pe&#245;es e colocam barreiras para chegar primeiro ao lado oposto do tabuleiro.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 a 4 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 20 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="5">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/58840_t.jpg" alt="Capa de Captain Flip" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Captain Flip</h2>
+            <p>Um jogo de coloca&#231;&#227;o de pe&#231;as em que os jogadores revelam personagens e montam sua tripula&#231;&#227;o, buscando combinar habilidades para marcar mais pontos.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 a 5 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 20 min</li>
+            </ul>
           </div>
         </article>
         <article class="game-card" data-min-players="3" data-max-players="4">
           <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/397_t.jpg" alt="Capa de Catan: O Jogo" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
           <div class="game-card__content">
             <h2>Catan: O Jogo</h2>
-            <p>Negocie recursos, construa estradas e povoados e seja a primeira pessoa a desenvolver a ilha.</p>
+            <p>Um jogo de estrat&#233;gia e negocia&#231;&#227;o em que os jogadores colonizam uma ilha, coletam recursos, constroem estradas e cidades e disputam &#225;reas de expans&#227;o.</p>
             <ul class="game-card__facts" aria-label="Informações do jogo">
               <li><span aria-hidden="true">👥</span> 3 a 4 jogadores</li>
               <li><span aria-hidden="true">⏱</span> 90 min</li>
             </ul>
-            <a class="game-card__source" href="https://ludopedia.com.br/jogo/catan-the-settlers-of-catan" target="_blank" rel="noopener noreferrer">Fonte: Ludopedia <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="8">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/8147_t.jpg" alt="Capa de C&#243;digo Secreto" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>C&#243;digo Secreto</h2>
+            <p>Um jogo de associa&#231;&#227;o de palavras em equipes em que os jogadores d&#227;o pistas para que seus companheiros encontrem as palavras corretas sem revelar as dos advers&#225;rios.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 a 8 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 15 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="12">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/19371_t.jpg" alt="Capa de Concept Kids" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Concept Kids</h2>
+            <p>Um jogo de associa&#231;&#227;o de ideias em que os jogadores usam &#237;cones e imagens para ajudar a identificar animais, sem precisar saber ler.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 a 12 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 20 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="3" data-max-players="10">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/31068_t.jpg" alt="Capa de Cores com Dicas" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Cores com Dicas</h2>
+            <p>Um jogo de comunica&#231;&#227;o em cores em que os jogadores d&#227;o dicas para tentar fazer os outros identificarem uma cor espec&#237;fica entre centenas de possibilidades. citeturn0search6</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 3 a 10 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 30 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="10">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/460_t.jpg" alt="Capa de Coup" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Coup</h2>
+            <p>Um jogo de blefe e dedu&#231;&#227;o em que os jogadores assumem pap&#233;is secretos, usam suas habilidades e tentam eliminar os advers&#225;rios.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 a 10 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 15 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="5" data-max-players="30">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/50459_t.jpg" alt="Capa de Decis&#245;es de Merda" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Decis&#245;es de Merda</h2>
+            <p>Um jogo de perguntas e escolhas absurdas em que os jogadores precisam tomar decis&#245;es dif&#237;ceis e descobrir como os outros pensariam em cada situa&#231;&#227;o.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 5 a 30 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 40 min</li>
+            </ul>
           </div>
         </article>
         <article class="game-card" data-min-players="3" data-max-players="6">
           <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/606_t.jpg" alt="Capa de Dixit" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
           <div class="game-card__content">
             <h2>Dixit</h2>
-            <p>Use a criatividade para criar pistas sobre ilustra&#231;&#245;es e descobrir as cartas dos outros jogadores.</p>
+            <p>Um jogo de associa&#231;&#227;o de imagens em que os jogadores d&#227;o pistas sobre cartas ilustradas e tentam fazer alguns, mas n&#227;o todos, descobrirem qual &#233; a sua carta.</p>
             <ul class="game-card__facts" aria-label="Informações do jogo">
               <li><span aria-hidden="true">👥</span> 3 a 6 jogadores</li>
               <li><span aria-hidden="true">⏱</span> 30 min</li>
             </ul>
-            <a class="game-card__source" href="https://ludopedia.com.br/jogo/dixit" target="_blank" rel="noopener noreferrer">Fonte: Ludopedia <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="8">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/3857_t.jpg" alt="Capa de Dobble" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Dobble</h2>
+            <p>Um jogo de observa&#231;&#227;o e velocidade em que os jogadores procuram rapidamente o &#250;nico s&#237;mbolo em comum entre duas cartas.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 a 8 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 10 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="6">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/77068_t.jpg" alt="Capa de Drag Slay" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Drag Slay</h2>
+            <p>Um jogo de cartas em tempo real em que os jogadores disputam quem consegue montar primeiro seu visual e chegar ao palco da AURA. citeturn1search2</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 a 6 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 10 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="4">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/25416_t.jpg" alt="Capa de Dragomino" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Dragomino</h2>
+            <p>Um jogo de coloca&#231;&#227;o de pe&#231;as em que os jogadores exploram uma ilha de drag&#245;es, formando paisagens e encontrando filhotes para marcar pontos.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 a 4 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 15 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="4" data-max-players="10">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/47716_t.jpg" alt="Capa de Efeito Manada" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Efeito Manada</h2>
+            <p>Um jogo de perguntas em que os jogadores tentam descobrir qual ser&#225; a resposta mais popular entre o grupo, buscando acompanhar a maioria.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 4 a 10 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 20 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="5">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/7007_t.jpg" alt="Capa de Exploding Kittens" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Exploding Kittens</h2>
+            <p>Um jogo de cartas de risco e blefe em que os jogadores compram cartas tentando evitar os gatinhos explosivos e usar a&#231;&#245;es para atrapalhar os advers&#225;rios.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 a 5 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 20 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="1" data-max-players="4">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/80051_t.jpg" alt="Capa de FlipToons" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>FlipToons</h2>
+            <p>Um jogo de constru&#231;&#227;o de baralho em que os jogadores montam elencos de personagens para produzir desenhos animados e conquistar fama. citeturn1search10</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 1 a 4 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 20 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="5">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/570_t.jpg" alt="Capa de Hanabi" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Hanabi</h2>
+            <p>Um jogo cooperativo de cartas em que os jogadores precisam montar fogos de artif&#237;cio em ordem, mas n&#227;o podem ver as pr&#243;prias cartas e dependem das pistas dos companheiros.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 a 5 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 30 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="3" data-max-players="8">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/15130_t.jpg" alt="Capa de Infiltrado" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Infiltrado</h2>
+            <p>Um jogo de dedu&#231;&#227;o e blefe em que um jogador &#233; o infiltrado e precisa se misturar ao grupo sem ser descoberto enquanto tenta descobrir a palavra secreta. citeturn0search13</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 3 a 8 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 15 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="8">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/57964_t.jpg" alt="Capa de Ito" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Ito</h2>
+            <p>Um jogo cooperativo de comunica&#231;&#227;o em que os jogadores colocam n&#250;meros em ordem usando apenas pistas e compara&#231;&#245;es, sem revelar diretamente seus valores.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 a 8 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 10 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="2">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/1261_t.jpg" alt="Capa de Jaipur" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Jaipur</h2>
+            <p>Um jogo de cartas para dois jogadores em que comerciantes trocam e vendem mercadorias, buscando obter os melhores neg&#243;cios e conquistar mais pontos.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 30 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="2">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/26506_t.jpg" alt="Capa de Jekyll vs Hyde" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Jekyll vs Hyde</h2>
+            <p>Um jogo de vazas para dois jogadores em que Dr. Jekyll e Mr. Hyde disputam o controle da mente, cada um com um objetivo diferente. citeturn1search1</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 30 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="4">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/18839_t.jpg" alt="Capa de Kariba" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Kariba</h2>
+            <p>Um jogo de cartas em que os jogadores colocam animais em um lago e fazem esp&#233;cies menores expulsarem as maiores para conquistar cartas.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 a 4 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 15 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="5">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/76783_t.jpg" alt="Capa de Looter&#39;s Escape" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Looter&#39;s Escape</h2>
+            <p>Um jogo de cartas de corrida e confronto em que os jogadores tentam escapar com seus tesouros enquanto usam cartas para atrapalhar os advers&#225;rios.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 a 5 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 30 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="1" data-max-players="8">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/13307_t.jpg" alt="Capa de Magic Maze" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Magic Maze</h2>
+            <p>Um jogo cooperativo em tempo real em que os jogadores controlam personagens em um shopping sem poder conversar, cada um respons&#225;vel por diferentes a&#231;&#245;es.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 1 a 8 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 15 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="4" data-max-players="8">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/80004_t.jpg" alt="Capa de N&#227;o Pode" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>N&#227;o Pode</h2>
+            <p>Um jogo de palavras em que os jogadores precisam fazer sua equipe adivinhar uma palavra sem usar as cinco palavras proibidas da carta. citeturn0search15</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 4 a 8 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 30 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="10">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/55059_t.jpg" alt="Capa de Nem a Pato!" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Nem a Pato!</h2>
+            <p>Um jogo de perguntas num&#233;ricas em que os jogadores tentam acertar respostas aproximadas e podem desafiar os palpites dos outros. citeturn0search10</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 a 10 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 20 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="6">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/87021_t.jpg" alt="Capa de Nimbo!" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Nimbo!</h2>
+            <p>Um jogo de cartas em que os jogadores tentam organizar e baixar suas cartas em combina&#231;&#245;es, usando estrat&#233;gia e observa&#231;&#227;o para se livrar delas.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 a 6 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 15 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="3" data-max-players="5">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/7067_t.jpg" alt="Capa de Quartz" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Quartz</h2>
+            <p>Um jogo de cole&#231;&#227;o e explora&#231;&#227;o de minas em que os jogadores extraem pedras preciosas, assumem riscos e tentam vender seus achados pelo maior valor poss&#237;vel.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 3 a 5 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 45 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="4">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/68018_t.jpg" alt="Capa de Ratjack" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Ratjack</h2>
+            <p>Um jogo de cartas de blefe e risco inspirado em jogos de cassino, em que os jogadores usam cartas com habilidades para buscar a melhor combina&#231;&#227;o de valores.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 a 4 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 30 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="3" data-max-players="10">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/620_t.jpg" alt="Capa de Saboteur" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Saboteur</h2>
+            <p>Um jogo de cartas de pap&#233;is ocultos em que an&#245;es escavadores tentam encontrar o ouro enquanto os sabotadores trabalham secretamente para impedir o caminho.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 3 a 10 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 30 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="4">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/23683_t.jpg" alt="Capa de Splendor: Marvel" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Splendor: Marvel</h2>
+            <p>Um jogo de desenvolvimento e cole&#231;&#227;o em que os jogadores recrutam personagens, acumulam recursos e disputam influ&#234;ncia para completar os objetivos do universo Marvel.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 a 4 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 40 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="5">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/63382_t.jpg" alt="Capa de Survive: The Island" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Survive: The Island</h2>
+            <p>Um jogo de estrat&#233;gia em que os jogadores tentam escapar de uma ilha que est&#225; afundando, movimentando sobreviventes e enfrentando criaturas e perigos.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 a 5 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 45 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="8">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/24269_t.jpg" alt="Capa de Taco Gato Cabra Queijo Pizza" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Taco Gato Cabra Queijo Pizza</h2>
+            <p>Um jogo de cartas de observa&#231;&#227;o e reflexos em que os jogadores repetem uma sequ&#234;ncia de palavras e precisam bater na pilha quando a palavra falada combina com a carta.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 a 8 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 10 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="6">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/66792_t.jpg" alt="Capa de Taco Gato Kids: Meu Primeiro Taco Gato!" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Taco Gato Kids: Meu Primeiro Taco Gato!</h2>
+            <p>Um jogo infantil de descarte e observa&#231;&#227;o em que os jogadores falam as palavras da sequ&#234;ncia enquanto revelam cartas e precisam ser r&#225;pidos para reagir &#224;s combina&#231;&#245;es. citeturn1search7</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 a 6 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 5 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="4">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/17305_t.jpg" alt="Capa de The Mind" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>The Mind</h2>
+            <p>Um jogo cooperativo em que os jogadores precisam baixar cartas em ordem crescente sem falar ou revelar informa&#231;&#245;es sobre suas m&#227;os.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 a 4 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 15 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="5" data-max-players="10">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/780_t.jpg" alt="Capa de The Resistance" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>The Resistance</h2>
+            <p>Um jogo de dedu&#231;&#227;o e blefe em que a equipe da Resist&#234;ncia tenta cumprir miss&#245;es enquanto espi&#245;es infiltrados trabalham secretamente para faz&#234;-las fracassar.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 5 a 10 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 30 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="5">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/2_t.jpg" alt="Capa de Ticket to Ride" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Ticket to Ride</h2>
+            <p>Um jogo de constru&#231;&#227;o de rotas em que os jogadores conectam cidades com linhas ferrovi&#225;rias, tentando cumprir seus bilhetes e conquistar pontos.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 a 5 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 45 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="5">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/133_t.jpg" alt="Capa de Ticket to Ride: Europa" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Ticket to Ride: Europa</h2>
+            <p>Uma vers&#227;o de Ticket to Ride ambientada na Europa em que os jogadores constroem rotas ferrovi&#225;rias entre cidades e usam t&#250;neis, balsas e esta&#231;&#245;es.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 a 5 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 60 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="3" data-max-players="13">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/22608_t.jpg" alt="Capa de Trial By Trolley" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Trial By Trolley</h2>
+            <p>Um jogo de argumenta&#231;&#227;o em que um jogador controla um bonde desgovernado e os demais tentam convenc&#234;-lo a poupar a pista que escolherem. citeturn1search3</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 3 a 13 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 15 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="6">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/50577_t.jpg" alt="Capa de Trio" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>Trio</h2>
+            <p>Um jogo de mem&#243;ria e dedu&#231;&#227;o em que os jogadores revelam cartas da mesa ou das m&#227;os dos participantes para encontrar tr&#234;s n&#250;meros iguais e formar trios. citeturn0search1</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 a 6 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 15 min</li>
+            </ul>
+          </div>
+        </article>
+        <article class="game-card" data-min-players="2" data-max-players="6">
+          <div class="game-card__cover-wrap"><img class="game-card__cover" src="https://storage.googleapis.com/ludopedia-capas/58503_t.jpg" alt="Capa de UNO: Show &#39;Em No Mercy" loading="lazy" onerror="this.parentElement.classList.add('game-card__cover-wrap--missing'); this.remove()"><span class="game-card__cover-placeholder" aria-hidden="true">🎲</span></div>
+          <div class="game-card__content">
+            <h2>UNO: Show &#39;Em No Mercy</h2>
+            <p>Uma vers&#227;o mais intensa de UNO em que os jogadores podem acumular cartas de compra, trocar m&#227;os e at&#233; ser eliminados ao acumular cartas demais.</p>
+            <ul class="game-card__facts" aria-label="Informações do jogo">
+              <li><span aria-hidden="true">👥</span> 2 a 6 jogadores</li>
+              <li><span aria-hidden="true">⏱</span> 15 min</li>
+            </ul>
           </div>
         </article>
     </section>
